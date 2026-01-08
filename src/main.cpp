@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     std::cout << "test.element.cst..." << std::endl;
     Element::Test<Element::CST>::Dirac();
     Element::Test<Element::CST>::SumToUnity();
-    Element::Test<Element::CST>::EtaDerivative();
+    Element::Test<Element::CST>::PhiDerivative();
     std::cout << "                  ...tests pass!" << std::endl;
 
 }

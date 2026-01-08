@@ -29,13 +29,13 @@ public:
     * 
     *  The three shape functions are
     * 
-    *      eta1 = 1 - Y1 - Y2
-    *      eta2 = Y1
-    *      eta3 = Y2
+    *      phi1 = 1 - Y1 - Y2
+    *      phi2 = Y1
+    *      phi3 = Y2
     */
     
 
-    std::array<double,3> eta(Set::Vector Y) override
+    std::array<double,3> phi(Set::Vector Y) override
     {
         // 
         // TODO #1
@@ -46,7 +46,7 @@ public:
         //
         // input: Y
         //
-        // output: [eta_0(Y), eta_1(Y), eta_2(Y)]
+        // output: [phi_0(Y), phi_1(Y), phi_2(Y)]
         //
         // Notes:
         //   - C++ indexes from 0; e.g Y(0) is the x component,
@@ -64,7 +64,7 @@ public:
         return ret;               // <-- they are returned here
     }
 
-    std::array<Set::Vector,3> Deta(Set::Vector Y) override
+    std::array<Set::Vector,3> Dphi(Set::Vector Y) override
     {
 
         // 
@@ -75,9 +75,9 @@ public:
         //
         // input: Y 
         //
-        // output: [{deta_0/dY_0, deta_0/dY_1},
-        //          {deta_1/dY_0, deta_1/dY_1},
-        //          {deta_2/dY_0, deta_2/dY_1}]
+        // output: [{dphi_0/dY_0, dphi_0/dY_1},
+        //          {dphi_1/dY_0, dphi_1/dY_1},
+        //          {dphi_2/dY_0, dphi_2/dY_1}]
         //
 
         std::array<Set::Vector,3> ret; // <-- store the return values here
