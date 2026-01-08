@@ -10,22 +10,22 @@ class Q9 : public Element<2,9,9>
 public:
     using Element<2,9,9>::Element;
 
-    std::array<double,9> eta(Eigen::Vector2d Y) override
+    std::array<double,9> eta(Eigen::Vector2d Y)
     {
         std::array<double,9> ret;
 
-        // TODO #1: Implement eta
+        // TODO - Copy implementation from PS03
 
         return ret;
     }
 
-    std::array<Eigen::Vector2d,9> Deta(Eigen::Vector2d Y) override
+    std::array<Eigen::Vector2d,9> Deta(Eigen::Vector2d Y)
     {
-        std::array<Eigen::Vector2d,9> Dphi;
+        std::array<Eigen::Vector2d,9> Dret;
 
-        // TODO #2: Implement derivative of eta
+        // TODO - Copy implementation from PS03
 
-        return Dphi;
+        return Dret;
     }
 
 public:
