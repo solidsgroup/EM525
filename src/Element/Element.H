@@ -66,9 +66,9 @@ public:
     }
 
 
-    virtual std::array<double,N> eta(Set::Vector y) = 0;
+    virtual std::array<double,N> phi(Set::Vector y) = 0;
 
-    virtual std::array<Set::Vector,N> Deta(Set::Vector y) = 0;
+    virtual std::array<Set::Vector,N> Dphi(Set::Vector y) = 0;
 
     Set::Matrix Jacobian(Set::Vector Y)
     {
