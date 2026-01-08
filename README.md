@@ -4,34 +4,12 @@ FEM Coding Assignment: LST, Q4, Q9 Shape Functions
 This assignment is similar to assignment 2: the objetive is to implement shape functions for 
 linear strain triangle (LST), bilinear quadrilateral (Q4), and Larange quadrilateral (Q9) elements.
 
-Initial setup
--------------
+Initial setup (same as before)
+------------------------------
 
-1. Check out the problem repository
-    
-         git clone https://github.com/solidsgroup/EM525-PS03.git
-   
-2. Change into the problem directory
+Either (1) check out a fresh copy of this repo with the appropriate branch, or (2) switch to the appropriate branch on your existing copy.
+(Don't forget to do a `git pull` on the branch to get any recent changes.)
 
-         cd EM525-PS03
-   
-3. Use this command to install eigen (optional: you can skip this if you have eigen installed)
-
-         make eigen
-
-4. Now, compile the code
-
-         make
-
-   Note that the **code will not compile initially**. You should see the following error message:
-
-         src/main.cpp:4:10: fatal error: Element/CST.H: No such file or directory
-
-   To fix this, you must copy your completed `src/Element/CST.H` from PS02 to the `src/Element/` directory.
-
-5. Compile the code again (using `make`) and run with `./bin/main`.
-   The output should indicate that the DiracTest, SumToUnityTest, and EtaDerivativeTest passes for
-   CST (which you implemented before), and that it fails for LST, Q4, and Q9.
 
 Implementation
 --------------
