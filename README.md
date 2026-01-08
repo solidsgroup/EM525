@@ -7,8 +7,8 @@ Either (1) check out a fresh copy of this repo with the appropriate branch, or (
 (Don't forget to do a `git pull` on the branch to get any recent changes.)
 
 
-Part 1: Copying previous implementation
----------------------------------------
+Copying previous implementation
+-------------------------------
 
 Copy the following files directly from PS05. 
 
