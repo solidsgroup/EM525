@@ -97,9 +97,9 @@ public:
     //
     // Test the shape function property that
     //
-    // eta_i(y_j) = delta_{ij}
+    // phi_i(y_j) = delta_{ij}
     //
-    // where y_j are the element points and eta
+    // where y_j are the element points and phi
     // are the shape functions.
     //
     static void Dirac()
@@ -112,16 +112,16 @@ public:
         {
             for (int m = 0; m < N; m++)
             {
-                if (n==m && fabs(elem.eta(Y0[n])[m] - 1.0) > 1E-8)
+                if (n==m && fabs(elem.phi(Y0[n])[m] - 1.0) > 1E-8)
                     throw Util::Exception::UnitTest(
                         "Dirac test failed: n="+std::to_string(n) +
                         " m=" + std::to_string(m) + 
-                        "eta^m(y^n) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 1.0");
-                if (n!=m && fabs(elem.eta(Y0[n])[m] - 0.0) > 1E-8)
+                        "phi^m(y^n) = " + std::to_string(elem.phi(Y0[n])[m]) + " != 1.0");
+                if (n!=m && fabs(elem.phi(Y0[n])[m] - 0.0) > 1E-8)
                     throw Util::Exception::UnitTest(
                         "Dirac test failed: n="+std::to_string(n) +
                         " m=" + std::to_string(m) + 
-                        " eta^m(y^n) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 0.0" );
+                        " phi^m(y^n) = " + std::to_string(elem.phi(Y0[n])[m]) + " != 0.0" );
             }
         }
      }
@@ -141,7 +141,7 @@ public:
         {
             Set::Vector Y = RandomPointInElement(elem);
             double sum = 0.0;
-            for (int n = 0; n < N; n++) sum += elem.eta(Y)[n];
+            for (int n = 0; n < N; n++) sum += elem.phi(Y)[n];
             if (fabs(sum-1.0) > 1E-8)
             {
                 throw Util::Exception::UnitTest("SumToUnity test failed: sum=" + std::to_string(sum) +
@@ -165,7 +165,7 @@ public:
         for (int q = 0; q < Q; q++)
             for (int n = 0; n < N; n++)
             {
-                Anumerical += qw[q] * elem.eta(qp[q])[n];
+                Anumerical += qw[q] * elem.phi(qp[q])[n];
             }
 
         if (fabs(Aexact) < 1E-8)
@@ -181,12 +181,12 @@ public:
 
 
     //
-    // [function EtaDerivative]
+    // [function PhiDerivative]
     //
-    // This function checks to make sure the eta derivatives
+    // This function checks to make sure the phi derivatives
     // have been computed properly.
     //
-    static void EtaDerivative()
+    static void PhiDerivative()
     {
         ELEMENT elem = Default();
         int N = ELEMENT::_N;
@@ -199,7 +199,7 @@ public:
         {
             Set::Vector Y = RandomPointInElement(elem);
 
-            auto deta_exact = elem.Deta(Y);
+            auto dphi_exact = elem.Dphi(Y);
             for (int d = 0 ; d < D; d++)
             {
                 Set::Vector dy = Set::Vector::Zero();
@@ -207,14 +207,14 @@ public:
 
                 for (int n = 0; n < N; n++)
                 {
-                    double exact = deta_exact[n](d);
+                    double exact = dphi_exact[n](d);
                 
-                    double numerical = (elem.eta(Y+dy)[n] - elem.eta(Y)[n])/small;
+                    double numerical = (elem.phi(Y+dy)[n] - elem.phi(Y)[n])/small;
 
                     double diff = exact-numerical;
                     double norm = std::max(exact+numerical,1.0);
                     if (fabs(diff/(norm+tolerance)) > tolerance)
-                        throw Util::Exception::UnitTest("Element::Test::EtaDerivative failed for node " 
+                        throw Util::Exception::UnitTest("Element::Test::PhiDerivative failed for node " 
                                                         + std::to_string(n) + ", error = "
                                                         + std::to_string(fabs(diff)));
                 }
@@ -224,9 +224,9 @@ public:
 
 
     //
-    // [function EtaDerivative]
+    // [function PhiDerivative]
     //
-    // This function checks to make sure the eta derivatives
+    // This function checks to make sure the phi derivatives
     // have been computed properly.
     //
     static void IsoparametricCheck()
