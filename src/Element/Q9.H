@@ -11,12 +11,12 @@ class Q9 : public Element<2,9,9,MODEL>
 public:
     using Element<2,9,9,MODEL>::Element;
 
-    std::array<double,9> eta(Set::Vector Y) override
+    std::array<double,9> phi(Set::Vector Y) override
     {
         // TODO - copy from previous
     }
 
-    std::array<Set::Vector,9> Deta(Set::Vector Y) override
+    std::array<Set::Vector,9> Dphi(Set::Vector Y) override
     {
         // TODO - copy from previous
     }

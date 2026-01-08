@@ -11,12 +11,12 @@ class CST : public Element<2,3,1,MODEL>
 public:
     using Element<2,3,1,MODEL>::Element;
 
-    std::array<double,3> eta(Set::Vector Y) override
+    std::array<double,3> phi(Set::Vector Y) override
     {
         // TODO - copy from previous
     }
 
-    std::array<Set::Vector,3> Deta(Set::Vector Y) override
+    std::array<Set::Vector,3> Dphi(Set::Vector Y) override
     {
         // TODO - copy from previous
     }
