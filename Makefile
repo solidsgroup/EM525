@@ -12,28 +12,33 @@ SRC = $(shell find ./src/ -name "*.cpp")
 #    bin/main
 # the optimized version of the code.
 #
-default: bin/main bin/test
+default: bin/main
 	@echo "Done"
 
 #
 # Entry point 2: This runs if you type
-# >  make opt
+# >  make debug
 # and produces
-#    bin/main-opt
-# the optimized version of the code
+#    bin/main-debug
+# the debug version of the code
 #
-opt: bin/main-opt
+debug: bin/main-debug
 	@echo "Done"
 
 #
-# Entry point 3: This downloads and renames the eigen library
-# so that you don't have to install it manually
+# This recipe provides the instructions for
+# building the main program in optimized (O3) mode.
 #
-eigen: 
-	git clone https://gitlab.com/libeigen/eigen.git
-	mv eigen src/eigen3
-
 bin/%: src/%.cpp $(HDR)
 	mkdir -p bin
-	$(CC) -std=c++17 $< -o $@ -I ./src -O3 -Wall -Wno-sign-compare -Wfatal-errors -lstdc++fs
+	$(CC) -std=c++17 $< -o $@ -I ./src -O3
+
+#
+# This recipe provides the instructions for
+# building the main program in debug mode.
+#
+bin/%-debug: src/%.cpp $(HDR)
+	mkdir -p bin
+	$(CC) -std=c++17 $< -o $@ -I ./src -g -Wall -Wno-sign-compare -Wfatal-errors
+
 
