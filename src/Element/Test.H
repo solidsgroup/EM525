@@ -4,18 +4,34 @@
 #include "Element/Element.H"
 namespace Element
 {
-
 //
 // This is a suite of tesing functions to determine whether Elements are
 // coded properly.
 //
-
-
 template<class ELEMENT>
 class Test
 {
-
 private:
+
+    //
+    // [function Element::Test<ELEMENT>::Default()]
+    //
+    // Static utility function (not for general use)
+    // to generate a "default" element, where the 
+    // embedded position is the same as the template position.
+    //
+    static ELEMENT Default()
+    {
+        ELEMENT tmp;
+        std::array<Set::Vector,ELEMENT::_N> X0;
+        for (int n = 0 ; n < ELEMENT::_N; n++)
+        {
+            X0[n] = Set::Vector::Zero();
+            for (int d = 0; d < ELEMENT::_D; d++)
+                X0[n](d) = tmp.getY0()[n](d);
+        }
+        return ELEMENT(X0);
+    }
 
     //
     // [function RandomPointInElement]
@@ -25,7 +41,7 @@ private:
     // guaranteed to be within the element, as long as the
     // element is convex.
     //
-    static Eigen::Vector2d RandomPointInElement(ELEMENT &elem)
+    static Set::Vector RandomPointInElement(ELEMENT &elem)
     {
         double sum = 0.0;
         const int N = ELEMENT::_N;
@@ -34,7 +50,7 @@ private:
         for (int n = 0; n < N; n++) sum += lamb[n];
         for (int n = 0; n < N; n++) lamb[n] /= sum;
         auto Y0 = elem.getY0();
-        Eigen::Vector2d Y = Eigen::Vector2d::Zero();
+        Set::Vector Y = Set::Vector::Zero();
         for (int n = 0; n < N; n++) Y += lamb[n] * Y0[n];
         return Y;
     }    
@@ -54,7 +70,7 @@ public:
     //
     static void Dirac()
     {
-        ELEMENT elem;
+        ELEMENT elem = Default();
         auto Y0 = elem.getY0();
         int N = Y0.size();
 
@@ -64,14 +80,14 @@ public:
             {
                 if (n==m && fabs(elem.eta(Y0[n])[m] - 1.0) > 1E-8)
                     throw Util::Exception::UnitTest(
-                        "Weak Dirac test failed: n="+std::to_string(n) +
+                        "Dirac test failed: n="+std::to_string(n) +
                         " m=" + std::to_string(m) + 
-                        "eta^n(y^m) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 1.0");
+                        "eta^m(y^n) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 1.0");
                 if (n!=m && fabs(elem.eta(Y0[n])[m] - 0.0) > 1E-8)
                     throw Util::Exception::UnitTest(
-                        "Weak Dirac test failed: n="+std::to_string(n) +
+                        "Dirac test failed: n="+std::to_string(n) +
                         " m=" + std::to_string(m) + 
-                        " eta^n(y^m) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 0.0" );
+                        " eta^m(y^n) = " + std::to_string(elem.eta(Y0[n])[m]) + " != 0.0" );
             }
         }
      }
@@ -84,12 +100,12 @@ public:
     //
     static void SumToUnity()
     {
-        ELEMENT elem;
+        ELEMENT elem = Default();
         int N = ELEMENT::_N;
 
         for (int iter = 0; iter < 100; iter++)
         {
-            Eigen::Vector2d Y = RandomPointInElement(elem);
+            Set::Vector Y = RandomPointInElement(elem);
             double sum = 0.0;
             for (int n = 0; n < N; n++) sum += elem.eta(Y)[n];
             if (fabs(sum-1.0) > 1E-8)
@@ -108,22 +124,21 @@ public:
     //
     static void EtaDerivative()
     {
-        ELEMENT elem;
+        ELEMENT elem = Default();
         int N = ELEMENT::_N;
         int D = ELEMENT::_D;
     
-        srand((unsigned)(time(NULL)));
         double small = 1E-8;
         double tolerance = 1E-4;
 
         for (int iter = 0; iter < 100; iter++)
         {
-            Eigen::Vector2d Y = RandomPointInElement(elem);
+            Set::Vector Y = RandomPointInElement(elem);
 
             auto deta_exact = elem.Deta(Y);
             for (int d = 0 ; d < D; d++)
             {
-                Eigen::Vector2d dy = Eigen::Vector2d::Zero();
+                Set::Vector dy = Set::Vector::Zero();
                 dy(d) = small;
 
                 for (int n = 0; n < N; n++)
@@ -134,8 +149,9 @@ public:
 
                     double diff = exact-numerical;
                     double norm = std::max(exact+numerical,1.0);
-                    if (fabs(diff/norm) > tolerance)
-                        throw Util::Exception::UnitTest("Element::Test::EtaDerivative failed, error = "
+                    if (fabs(diff/(norm+tolerance)) > tolerance)
+                        throw Util::Exception::UnitTest("Element::Test::EtaDerivative failed for node " 
+                                                        + std::to_string(n) + ", error = "
                                                         + std::to_string(fabs(diff)));
                 }
             }

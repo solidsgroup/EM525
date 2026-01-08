@@ -11,31 +11,31 @@ public:
     using Element<2,3,1>::Element;
 
 
-    //
-    // Constant Strain Triangle Element (CST)
-    //
-    //       Y2
-    //       |
-    // (0,1) O
-    //       |\
-    //       |  \
-    //       |    \
-    //       |      \
-    //       |        \
-    //       |          \
-    //       |            \
-    // (0,0) O-------------O---  Y1
-    //                    (1,0)
-    //
-    // The three shape functions are
-    //
-    //     eta1 = 1 - Y1 - Y2
-    //     eta2 = Y1
-    //     eta3 = Y2
-    //
+    /**
+    *  Constant Strain Triangle Element (CST)
+    * 
+    *        Y2
+    *        |
+    *  (0,1) O
+    *        |\
+    *        |  \
+    *        |    \
+    *        |      \
+    *        |        \
+    *        |          \
+    *        |            \
+    *  (0,0) O-------------O---  Y1
+    *                     (1,0)
+    * 
+    *  The three shape functions are
+    * 
+    *      eta1 = 1 - Y1 - Y2
+    *      eta2 = Y1
+    *      eta3 = Y2
+    */
     
 
-    std::array<double,3> eta(Eigen::Vector2d Y) override
+    std::array<double,3> eta(Set::Vector Y) override
     {
         // 
         // TODO #1
@@ -64,7 +64,7 @@ public:
         return ret;               // <-- they are returned here
     }
 
-    std::array<Eigen::Vector2d,3> Deta(Eigen::Vector2d Y) override
+    std::array<Set::Vector,3> Deta(Set::Vector Y) override
     {
 
         // 
@@ -80,35 +80,30 @@ public:
         //          {deta_2/dY_0, deta_2/dY_1}]
         //
 
-        std::array<Eigen::Vector2d,3> ret; // <-- store the return values here
+        std::array<Set::Vector,3> ret; // <-- store the return values here
 
         // ** your code goes here **
 
         return ret;
     }
 
-
-
-
-
 public:
     //
     // This is a utility function 
     //
-    virtual const std::array<Eigen::Vector2d,3> & getY0() {return Y0;}
+    virtual const std::array<Set::Vector,3> & getY0() {return Y0;}
 
 private:
     //
-    // Hard-coded values common to all elements.
+    // Hard-coded values common to all elements
     //
-    const std::array<Eigen::Vector2d,3> Y0 = {
-        Eigen::Vector2d(0.0,0.0),
-        Eigen::Vector2d(1.0,0.0),
-        Eigen::Vector2d(0.0,1.0)
+
+    const std::array<Set::Vector,3> Y0 = {
+        Set::Vector(0.0,0.0),
+        Set::Vector(1.0,0.0),
+        Set::Vector(0.0,1.0)
     };
 
-public:
-    
 };
 
 }

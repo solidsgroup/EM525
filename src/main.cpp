@@ -1,6 +1,7 @@
 #include <iostream>
 #include "eigen3/Eigen/Core"
 #include "eigen3/Eigen/Dense"
+#include "Set/Set.H"
 #include "Element/CST.H"
 #include "Element/Test.H"
 
