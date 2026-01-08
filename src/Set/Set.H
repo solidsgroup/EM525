@@ -1,6 +1,10 @@
 #ifndef SET_SET_H
 #define SET_SET_H
 
+#include "eigen3/Eigen/Core"
+
+#define DIM 2
+
 namespace Set
 {
 
