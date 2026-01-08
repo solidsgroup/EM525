@@ -1,21 +1,10 @@
-#define DIM 2
-
 #include <iostream>
-#include "eigen3/Eigen/Core"
-#include "eigen3/Eigen/Dense"
 #include "Set/Set.H"
 #include "Element/CST.H"
 #include "Element/LST.H"
 #include "Element/Q4.H"
 #include "Element/Q9.H"
 #include "Element/Test.H"
-
-namespace Set
-{
-using Scalar = double;            // Note that "Set::Scalar" is the same as double
-using Vector = Eigen::Vector2d;   // Note that "Set::Vector" is the same as Eigen::Vector2d
-using Matrix = Eigen::Matrix2d;   // Note that "Set::Matrix" is the same as Eigen::Matrix2d
-}
 
 int main(int argc, char **argv)
 {

@@ -21,7 +21,7 @@ public:
 
     std::array<Set::Vector,6> Dphi(Set::Vector Y) override
     {
-        std::array<Eigen::Vector2d,6> ret;
+        std::array<Set::Vector,6> ret;
 
         // TODO #2: Implement dPhi
         
