@@ -1,4 +1,4 @@
-FEM Coding Assignment: Quadrature Points and the Isoparametric Element Jacobian
+FEM Coding Assignment 4: Quadrature Points and the Isoparametric Element Jacobian
 ===============================================================================
 
 This assignment extends the Q4, Q9, CST, and LST elements that you implemented in PS03 to
@@ -7,24 +7,8 @@ include quadrature weights and points, as well as to add the calculation of the 
 Initial setup (same as before)
 ------------------------------
 
-1. Check out the problem repository
-    
-         git clone https://github.com/solidsgroup/EM525-PS04.git
-   
-2. Change into the problem directory
-
-         cd EM525-PS04
-   
-3. Use this command to install eigen (optional: you can skip this if you have eigen installed)
-
-         make eigen
-
-4. Now, compile the code
-
-         make
-
-   You should see a number of warnings indicating "no return statement".
-   These should disappear once you have implemented the assignment.
+Either (1) check out a fresh copy of this repo with the appropriate branch, or (2) switch to the appropriate branch on your existing copy.
+(Don't forget to do a `git pull` on the branch to get any recent changes.)
 
 Part 1: Adding quadrature points and weights
 --------------------------------------------
