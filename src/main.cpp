@@ -26,15 +26,15 @@ int main(int argc, char **argv)
     
     std::cout << "test.element.cst.diractest...";
     try {Element::Test<Element::CST>::Dirac(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.cst.sumtounitytest...";
     try {Element::Test<Element::CST>::SumToUnity(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.cst.etaderivativetest...";
     try {Element::Test<Element::CST>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
 
     //
@@ -43,15 +43,15 @@ int main(int argc, char **argv)
     
     std::cout << "test.element.lst.diractest...";
     try {Element::Test<Element::LST>::Dirac(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.lst.sumtounitytest...";
     try {Element::Test<Element::LST>::SumToUnity(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.lst.etaderivativetest...";
     try {Element::Test<Element::LST>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     //
     // Q4 Tests
@@ -59,15 +59,15 @@ int main(int argc, char **argv)
     
     std::cout << "test.element.q4.diractest...";
     try {Element::Test<Element::Q4>::Dirac(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.q4.sumtounitytest...";
     try {Element::Test<Element::Q4>::SumToUnity(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.q4.etaderivativetest...";
     try {Element::Test<Element::Q4>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     //
     // Q9 Tests
@@ -75,14 +75,14 @@ int main(int argc, char **argv)
     
     std::cout << "test.element.q9.diractest...";
     try {Element::Test<Element::Q9>::Dirac(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.q9.sumtounitytest...";
     try {Element::Test<Element::Q9>::SumToUnity(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
     std::cout << "test.element.q9.etaderivativetest...";
     try {Element::Test<Element::Q9>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
-    catch(Util::Exception::UnitTest e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
+    catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << e.what() << std::endl;}
 
 }
