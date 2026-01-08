@@ -1,15 +1,7 @@
 
 #include <iostream>
 
-#include "eigen3/Eigen/Core"
-#include "eigen3/Eigen/Dense"
-
-namespace Set
-{
-using Scalar = double;            // Note that "Set::Scalar" is the same as double
-using Vector = Eigen::Vector2d;   // Note that "Set::Vector" is the same as Eigen::Vector2d
-using Matrix = Eigen::Matrix2d;   // Note that "Set::Matrix" is the same as Eigen::Matrix2d
-}
+#include "Set/Set.H"
 
 int main(int argc, char **argv)
 {
