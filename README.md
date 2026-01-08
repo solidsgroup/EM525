@@ -1,28 +1,12 @@
-FEM Coding Assignment: Isoparametric Elements and Unstructured Meshes
+FEM Coding Assignment 6: Isoparametric Elements and Unstructured Meshes
 =====================================================================
 
 
 Initial setup (same as before)
 ------------------------------
 
-1. Check out the problem repository
-    
-         git clone https://github.com/solidsgroup/EM525-PS06.git
-   
-2. Change into the problem directory
-
-         cd EM525-PS06
-   
-3. Use this command to install eigen (optional: you can skip this if you have eigen installed)
-
-         make eigen
-
-4. Now, compile the code
-
-         make
-
-   The code **will not compile** because there are missing files.
-   These files must be copied as specified below before you can compile.
+Either (1) check out a fresh copy of this repo with the appropriate branch, or (2) switch to the appropriate branch on your existing copy.
+(Don't forget to do a `git pull` on the branch to get any recent changes.)
 
 
 Part 1: Copying previous implementation
