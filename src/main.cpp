@@ -1,6 +1,9 @@
+#define DIM 2
+
 #include <iostream>
 #include "eigen3/Eigen/Core"
 #include "eigen3/Eigen/Dense"
+#include "Set/Set.H"
 #include "Element/CST.H"
 #include "Element/LST.H"
 #include "Element/Q4.H"

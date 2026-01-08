@@ -10,7 +10,7 @@ class Q9 : public Element<2,9,9>
 public:
     using Element<2,9,9>::Element;
 
-    std::array<double,9> eta(Eigen::Vector2d Y) override
+    std::array<double,9> eta(Set::Vector Y) override
     {
         std::array<double,9> ret;
 
@@ -19,9 +19,9 @@ public:
         return ret;
     }
 
-    std::array<Eigen::Vector2d,9> Deta(Eigen::Vector2d Y) override
+    std::array<Set::Vector,9> Deta(Set::Vector Y) override
     {
-        std::array<Eigen::Vector2d,9> Dret;
+        std::array<Set::Vector,9> Dret;
 
         // TODO - Copy implementation from PS03
 
@@ -29,8 +29,8 @@ public:
     }
 
 public:
-    virtual const std::array<Eigen::Vector2d,9> & getY0() {return Y0;}
-    virtual const std::array<Eigen::Vector2d,9> & getQp() {return Qp;}
+    virtual const std::array<Set::Vector,9> & getY0() {return Y0;}
+    virtual const std::array<Set::Vector,9> & getQp() {return Qp;}
     virtual const std::array<double,9> & getQw() {return Qw;}
     virtual const double getArea() {
         // TODO return the area.
@@ -41,19 +41,19 @@ private:
     // Hard-coded values common to all elements
     //
 
-    const std::array<Eigen::Vector2d,9> Y0 = {
-        Eigen::Vector2d(-1.0,-1.0),
-        Eigen::Vector2d( 0.0,-1.0),
-        Eigen::Vector2d( 1.0,-1.0),
-        Eigen::Vector2d( 1.0, 0.0),
-        Eigen::Vector2d( 1.0, 1.0),
-        Eigen::Vector2d( 0.0, 1.0),
-        Eigen::Vector2d(-1.0, 1.0),
-        Eigen::Vector2d(-1.0, 0.0),
-        Eigen::Vector2d( 0.0, 0.0),
+    const std::array<Set::Vector,9> Y0 = {
+        Set::Vector(-1.0,-1.0),
+        Set::Vector( 0.0,-1.0),
+        Set::Vector( 1.0,-1.0),
+        Set::Vector( 1.0, 0.0),
+        Set::Vector( 1.0, 1.0),
+        Set::Vector( 0.0, 1.0),
+        Set::Vector(-1.0, 1.0),
+        Set::Vector(-1.0, 0.0),
+        Set::Vector( 0.0, 0.0),
     };
 
-    const std::array<Eigen::Vector2d,9> Qp = {
+    const std::array<Set::Vector,9> Qp = {
         // TODO add quadrature points (vectors)
     };
 

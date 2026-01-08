@@ -23,10 +23,10 @@ private:
     static ELEMENT Default()
     {
         ELEMENT tmp;
-        std::array<Eigen::Vector2d,ELEMENT::_N> X0;
+        std::array<Set::Vector,ELEMENT::_N> X0;
         for (int n = 0 ; n < ELEMENT::_N; n++)
         {
-            X0[n] = Eigen::Vector2d::Zero();
+            X0[n] = Set::Vector::Zero();
             for (int d = 0; d < ELEMENT::_D; d++)
                 X0[n](d) = tmp.getY0()[n](d);
         }
@@ -41,7 +41,7 @@ private:
     // guaranteed to be within the element, as long as the
     // element is convex.
     //
-    static Eigen::Vector2d RandomPointInElement(ELEMENT &elem)
+    static Set::Vector RandomPointInElement(ELEMENT &elem)
     {
         double sum = 0.0;
         const int N = ELEMENT::_N;
@@ -50,7 +50,7 @@ private:
         for (int n = 0; n < N; n++) sum += lamb[n];
         for (int n = 0; n < N; n++) lamb[n] /= sum;
         auto Y0 = elem.getY0();
-        Eigen::Vector2d Y = Eigen::Vector2d::Zero();
+        Set::Vector Y = Set::Vector::Zero();
         for (int n = 0; n < N; n++) Y += lamb[n] * Y0[n];
         return Y;
     }    
@@ -105,7 +105,7 @@ public:
 
         for (int iter = 0; iter < 100; iter++)
         {
-            Eigen::Vector2d Y = RandomPointInElement(elem);
+            Set::Vector Y = RandomPointInElement(elem);
             double sum = 0.0;
             for (int n = 0; n < N; n++) sum += elem.eta(Y)[n];
             if (fabs(sum-1.0) > 1E-8)
@@ -124,7 +124,7 @@ public:
         const int Q = ELEMENT::_Q;
 
         double Aexact = elem.getArea();
-        std::array<Eigen::Vector2d,Q> qp = elem.getQp();
+        std::array<Set::Vector,Q> qp = elem.getQp();
         std::array<double,Q> qw = elem.getQw();
 
         double Anumerical = 0.0;
@@ -133,6 +133,13 @@ public:
             {
                 Anumerical += qw[q] * elem.eta(qp[q])[n];
             }
+
+        if (fabs(Aexact) < 1E-8)
+            throw Util::Exception::UnitTest("Exact area of element is zero");
+
+        if (fabs(Anumerical) < 1E-8)
+            throw Util::Exception::UnitTest("Got zero computed area");
+
         if (fabs(Aexact-Anumerical) > 1E-8)
             throw Util::Exception::UnitTest("Quadrature error: Aexact = " + std::to_string(Aexact) +
                               ", Anumerical = " + std::to_string(Anumerical));
@@ -151,18 +158,17 @@ public:
         int N = ELEMENT::_N;
         int D = ELEMENT::_D;
     
-        srand((unsigned)(time(NULL)));
         double small = 1E-8;
         double tolerance = 1E-4;
 
         for (int iter = 0; iter < 100; iter++)
         {
-            Eigen::Vector2d Y = RandomPointInElement(elem);
+            Set::Vector Y = RandomPointInElement(elem);
 
             auto deta_exact = elem.Deta(Y);
             for (int d = 0 ; d < D; d++)
             {
-                Eigen::Vector2d dy = Eigen::Vector2d::Zero();
+                Set::Vector dy = Set::Vector::Zero();
                 dy(d) = small;
 
                 for (int n = 0; n < N; n++)
@@ -173,7 +179,7 @@ public:
 
                     double diff = exact-numerical;
                     double norm = std::max(exact+numerical,1.0);
-                    if (fabs(diff/norm) > tolerance)
+                    if (fabs(diff/(norm+tolerance)) > tolerance)
                         throw Util::Exception::UnitTest("Element::Test::EtaDerivative failed for node " 
                                                         + std::to_string(n) + ", error = "
                                                         + std::to_string(fabs(diff)));

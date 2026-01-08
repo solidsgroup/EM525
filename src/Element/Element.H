@@ -13,13 +13,13 @@ public:
     Element()
     {}
                 
-    Element(std::vector<Eigen::Vector2d> &a_X0, std::array<int,N> a_id) :
+    Element(std::vector<Set::Vector> &a_X0, std::array<int,N> a_id) :
         X0(&a_X0), id(a_id)
     {}
 
-    Element(std::array<Eigen::Vector2d,N> &a_X0) 
+    Element(std::array<Set::Vector,N> &a_X0) 
     {
-        X0 = new std::vector<Eigen::Vector2d>();
+        X0 = new std::vector<Set::Vector>();
         for (int n = 0 ; n < N ; n++)
         {
             X0->push_back(a_X0[n]);
@@ -27,11 +27,11 @@ public:
         }
     }
 
-    virtual std::array<double,N> eta(Eigen::Vector2d y) = 0;
+    virtual std::array<double,N> eta(Set::Vector y) = 0;
 
-    virtual std::array<Eigen::Vector2d,N> Deta(Eigen::Vector2d y) = 0;
+    virtual std::array<Set::Vector,N> Deta(Set::Vector y) = 0;
 
-    Eigen::Matrix2d Jacobian(Eigen::Vector2d Y)
+    Set::Matrix Jacobian(Set::Vector Y)
     {
         // TODO Calculate the Jacobian
         
@@ -63,8 +63,8 @@ public:
 
 public:
     constexpr int getN() {return N;}
-    virtual const std::array<Eigen::Vector2d,N> & getY0() = 0;
-    virtual const std::array<Eigen::Vector2d,Q> & getQp() = 0;
+    virtual const std::array<Set::Vector,N> & getY0() = 0;
+    virtual const std::array<Set::Vector,Q> & getQp() = 0;
     virtual const std::array<double,Q> & getQw() = 0;
     virtual const double getArea() = 0;
     virtual const std::array<int,N> & getid() {return id;};
@@ -74,7 +74,7 @@ public:
     static const int _Q = Q; // The number of QUADRATURE POINTS in the element
 
 private:
-    std::vector<Eigen::Vector2d> *X0;
+    std::vector<Set::Vector> *X0;
     std::array<int,N> id;
 
 public:
