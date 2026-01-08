@@ -1,5 +1,5 @@
-FEM Coding Assignment: Elastic strain energy density,and element energy, and derivatives
-========================================================================================
+FEM Coding Assignment 5: Elastic strain energy density,and element energy, and derivatives
+==========================================================================================
 
 This assignment extends the Q4, Q9, CST, and LST elements that you implemented in PS03 to
 include quadrature weights and points, as well as to add the calculation of the Jacobian.
@@ -7,35 +7,8 @@ include quadrature weights and points, as well as to add the calculation of the 
 Initial setup (same as before)
 ------------------------------
 
-1. Check out the problem repository
-    
-         git clone https://github.com/solidsgroup/EM525-PS05.git
-   
-2. Change into the problem directory
-
-         cd EM525-PS05
-   
-3. Use this command to install eigen (optional: you can skip this if you have eigen installed)
-
-         make eigen
-
-4. Now, compile the code
-
-         make
-
-   You should see a number of warnings.
-   These will disappear once you have implemented the assignment correctly.
-
-Notational comment
-------------------
-
-You will notice that matrices here are called `Set::Matrix` instead of `Eigen::Matrix2d`.
-These two forms are **equivalent** and interchangeable, but I am going to try to stick to consistent use of `Set::Matrix` rather than `Eigen::Matrix2d` in the future.
-
-Similarly, `Set::Scalar` is identical to `double` and can be used interchangeably.
-
-We also introduce here `Set::Tensor4` which is a fourth-order tensor object.
-You can access elements similarly to how you access elements for `Set::Matrix`.
+Either (1) check out a fresh copy of this repo with the appropriate branch, or (2) switch to the appropriate branch on your existing copy.
+(Don't forget to do a `git pull` on the branch to get any recent changes.)
 
 
 Part 1: Copying previous implementation of LST, CST, Q4, Q9
