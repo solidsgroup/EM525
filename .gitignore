@@ -4,3 +4,4 @@ eigen3
 compile_commands.json
 #*
 .cache
+*.orig
