@@ -10,7 +10,7 @@ class Q9 : public Element<2,9,9>
 public:
     using Element<2,9,9>::Element;
 
-    std::array<double,9> eta(Set::Vector Y) override
+    std::array<double,9> phi(Set::Vector Y) override
     {
         std::array<double,9> ret;
 
@@ -19,7 +19,7 @@ public:
         return ret;
     }
 
-    std::array<Set::Vector,9> Deta(Set::Vector Y) override
+    std::array<Set::Vector,9> Dphi(Set::Vector Y) override
     {
         std::array<Set::Vector,9> Dret;
 

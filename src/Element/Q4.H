@@ -10,7 +10,7 @@ class Q4 : public Element<2,4,4>
 public:
     using Element<2,4,4>::Element;
 
-    std::array<double,4> eta(Set::Vector Y) override
+    std::array<double,4> phi(Set::Vector Y) override
     {
         std::array<double,4> ret;
 
@@ -19,13 +19,13 @@ public:
         return ret;
     }
 
-    std::array<Set::Vector,4> Deta(Set::Vector Y) override
+    std::array<Set::Vector,4> Dphi(Set::Vector Y) override
     {
-        std::array<Set::Vector,4> Deta;
+        std::array<Set::Vector,4> Dphi;
 
         // TODO - Copy implementation from PS03
 
-        return Deta;
+        return Dphi;
     }
 
 public:

@@ -27,9 +27,9 @@ public:
         }
     }
 
-    virtual std::array<double,N> eta(Set::Vector y) = 0;
+    virtual std::array<double,N> phi(Set::Vector y) = 0;
 
-    virtual std::array<Set::Vector,N> Deta(Set::Vector y) = 0;
+    virtual std::array<Set::Vector,N> Dphi(Set::Vector y) = 0;
 
     Set::Matrix Jacobian(Set::Vector Y)
     {
@@ -39,11 +39,11 @@ public:
         // your job is to fill it.
         Eigen::Matrix2d jacobian = Eigen::Matrix2d::Zero();
 
-        // This line calculates the eta derivatives 
+        // This line calculates the phi derivatives 
         // The components are indexed by:
-        //    deta^m / dx^n = deta[m](n)
+        //    dphi^m / dx^n = dphi[m](n)
         // 
-        std::array<Eigen::Vector2d,N> deta = Deta(Y);
+        std::array<Eigen::Vector2d,N> dphi = Dphi(Y);
 
         //
         // Use this loop to calculate the components of the jacobian matrix.

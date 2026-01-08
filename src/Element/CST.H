@@ -10,7 +10,7 @@ class CST : public Element<2,3,1>
 public:
     using Element<2,3,1>::Element;
 
-    std::array<double,3> eta(Set::Vector Y) override
+    std::array<double,3> phi(Set::Vector Y) override
     {
         std::array<double,3> ret;
 
@@ -19,7 +19,7 @@ public:
         return ret;
     }
 
-    std::array<Set::Vector,3> Deta(Set::Vector Y) override
+    std::array<Set::Vector,3> Dphi(Set::Vector Y) override
     {
         std::array<Eigen::Vector2d,3> ret;
 
