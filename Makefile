@@ -12,17 +12,17 @@ SRC = $(shell find ./src/ -name "*.cpp")
 #    bin/main
 # the optimized version of the code.
 #
-default: bin/main bin/test
+default: bin/main
 	@echo "Done"
 
 #
 # Entry point 2: This runs if you type
-# >  make opt
+# >  make debug
 # and produces
-#    bin/main-opt
-# the optimized version of the code
+#    bin/main-debug
+# the debug version of the code
 #
-opt: bin/main-opt
+debug: bin/main-debug
 	@echo "Done"
 
 #
@@ -35,5 +35,5 @@ eigen:
 
 bin/%: src/%.cpp $(HDR)
 	mkdir -p bin
-	$(CC) -std=c++17 $< -o $@ -I ./src -O3 -Wall -Wno-sign-compare -Wfatal-errors -lstdc++fs
+	$(CC) -std=c++17 $< -o $@ -I ./src -g -Wall -Wno-sign-compare -Wfatal-errors
 
