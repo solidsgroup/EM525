@@ -41,11 +41,7 @@ However, it will **not** pass the tests.
 
 ### (1a) Update the Jacobian
 
-Edi the following file
-
-- `src/Element/Element.H`
-
-In your implementation of the `Jacobian` function, change the node access from
+In your implementation of the `Jacobian` function in `Element/Element.H`, change the node access from
 
     (*X0)[n]
 
