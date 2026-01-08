@@ -1,4 +1,4 @@
-FEM Coding Assignment: LST, Q4, Q9 Shape Functions
+FEM Coding Assignment 3: LST, Q4, Q9 Shape Functions
 ==================================================
 
 This assignment is similar to assignment 2: the objetive is to implement shape functions for 
