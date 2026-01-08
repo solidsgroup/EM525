@@ -37,8 +37,8 @@ int main(int argc, char **argv)
     try {Element::Test<Element::CST<Model::Isotropic>>::SumToUnity(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
-    std::cout << "test.element.cst.etaderivativetest...";
-    try {Element::Test<Element::CST<Model::Isotropic>>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
+    std::cout << "test.element.cst.phiderivativetest...";
+    try {Element::Test<Element::CST<Model::Isotropic>>::PhiDerivative(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
     std::cout << "test.element.cst.quadrature...";
@@ -65,8 +65,8 @@ int main(int argc, char **argv)
     try {Element::Test<Element::LST<Model::Isotropic>>::SumToUnity(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
-    std::cout << "test.element.lst.etaderivativetest...";
-    try {Element::Test<Element::LST<Model::Isotropic>>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
+    std::cout << "test.element.lst.phiderivativetest...";
+    try {Element::Test<Element::LST<Model::Isotropic>>::PhiDerivative(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
     std::cout << "test.element.lst.quadrature...";
@@ -93,8 +93,8 @@ int main(int argc, char **argv)
     try {Element::Test<Element::Q4<Model::Isotropic>>::SumToUnity(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
-    std::cout << "test.element.q4.etaderivativetest...";
-    try {Element::Test<Element::Q4<Model::Isotropic>>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
+    std::cout << "test.element.q4.phiderivativetest...";
+    try {Element::Test<Element::Q4<Model::Isotropic>>::PhiDerivative(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
     std::cout << "test.element.q4.quadrature...";
@@ -121,8 +121,8 @@ int main(int argc, char **argv)
     try {Element::Test<Element::Q9<Model::Isotropic>>::SumToUnity(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
-    std::cout << "test.element.q9.etaderivativetest...";
-    try {Element::Test<Element::Q9<Model::Isotropic>>::EtaDerivative(); std::cout <<"pass"<<std::endl;}
+    std::cout << "test.element.q9.phiderivativetest...";
+    try {Element::Test<Element::Q9<Model::Isotropic>>::PhiDerivative(); std::cout <<"pass"<<std::endl;}
     catch(Util::Exception::UnitTest &e) {std::cout << "failed:" << std::endl << "   --> " << e.what() << std::endl;}
 
     std::cout << "test.element.q9.quadrature...";
