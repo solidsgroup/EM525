@@ -42,13 +42,13 @@ Implementation
 Here you will implement shape functions for a constant strain triangle (CST) element.
 Complete the `TODO`s in `src/Element/CST.H`.
 You will complete the code for the shape function `phi` that calculates 
-$$
+```math
 \begin{bmatrix} \phi_1(\mathbf{Y}) & \phi_2(\mathbf{Y}) & \phi_3(\mathbf{Y}) \end{bmatrix} 
-$$
+```
 and a function `Dphi` that calculates the derivatives
-$$
+```math
 \begin{bmatrix} \frac{\partial\phi_1}{\partial\mathbf{Y}} & \frac{\partial\phi_2}{\partial\mathbf{Y}} & \frac{\partial\phi_2}{\partial\mathbf{Y}}\end{bmatrix} 
-$$
+```
 
 Testing
 -------
