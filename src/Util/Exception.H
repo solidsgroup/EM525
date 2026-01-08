@@ -1,6 +1,7 @@
 #ifndef UTIL_EXCEPTIONS_H
 #define UTIL_EXCEPTIONS_H
-#include <exception>
+
+#include <stdexcept>
 
 namespace Util
 {
@@ -17,20 +18,18 @@ class IO : public std::runtime_error
 public:
     using std::runtime_error::runtime_error;
 };
+
 class Runtime : public std::runtime_error
 {
 public:
     using std::runtime_error::runtime_error;
 };
 
-
 class Numeric : public std::runtime_error
 {
 public:
     using std::runtime_error::runtime_error;
 };
-
-
 }
 }
 
