@@ -1,15 +1,15 @@
-# FEM Coding Assignment: Isoparametric Elements, Unstructured Meshes, FEM simulation
+# FEM Coding Assignment: Stresses and Convergence Study
 
 
 ## Initial setup (same as before)
 
 1. Check out the problem repository
     
-         git clone https://github.com/solidsgroup/EM525-PS07.git
+         git clone https://github.com/solidsgroup/EM525-PS08.git
    
 2. Change into the problem directory
 
-         cd EM525-PS07
+         cd EM525-PS08
    
 3. Use this command to install eigen (optional: you can skip this if you have eigen installed)
 
@@ -27,7 +27,6 @@
 
 Copy the following files directly from PS05. 
 
-- `src/Element/Element.H`
 - `src/Element/LST.H`
 - `src/Element/CST.H`
 - `src/Element/Q4.H`
@@ -35,80 +34,51 @@ Copy the following files directly from PS05.
 - `src/Model/Isotropic.H`
 
 If you do this correctly the code will compile.
-However, it will **not** pass the tests.
 
-## Part 1: Global stiffness matrix construction
+## Part 1: Calculate element stresses
 
-### (1a) Update the Jacobian
+Edit the following file
 
-In your implementation of the `Jacobian` function in `Element/Element.H`, change the node access from
+- `src/Element/Element.H`
 
-    (*X0)[n]
+* Update the missing code with your code from PS07.
 
-to 
-
-    (*X0)[id[n]]
-
-The `id` array is a list of nodal indexes that each element has. 
-For instance, a Q4 element might have 
-
-    id = {0, 3, 29, 1}
-	
-That is, it is a Q4 element between the nodes indexed by 0, 3, 29, and 1.
-
-
-### (1b) Implement the Mesh energy derivatives
+* Implement the `Stress` function, which calculates the average stress over the element and returns
+  the corresponding stress tensor as a matrix.
 
 Edit the following file
 
 - `src/Mesh/Unstructured.H`
 
-Update the `W`, `DW`, and `DDW` for Q4, LST, and Q9 elements, following the existing
-implementation for CST elements.
+* Update the missing code with your code from PS07
+
+* Complete the implementation of the `Stress` function, which calculates the stresses for all elements
+  and stores them in a vector.
+
+* Complete the implementation of the `Print` function to include stress as an ouptut.
 
 
-### (1c) Run the tests
+## Part 2: Mesh convergence
 
-If you have implemented the above correctly, you can run the tests by
+The following mesh files are included:
 
-   ./bin/test
+- `platehole_cst.vtk`
+- `platehole_cst_refine1.vtk`
+- `platehole_cst_refine2.vtk`
+- `platehole_lst.vtk`
+- `platehole_lst_refine1.vtk`
+- `platehole_lst_refine2.vtk`
+- `platehole_q4.vtk`
+- `platehole_q4_refine1.vtk`
+- `platehole_q4_refine2.vtk`
+- `platehole_q9.vtk`
+- `platehole_q9_refine1.vtk`
+- `platehole_q9_refine2.vtk`
 
-Make sure the tests pass before proceeding to the next part.
+(Note: the `q9_refine2` may take a little while to run, especially on older computers.)
 
-## Part 2: Finite element calculation
+All meshes have the same geometry, but different elements and differing resolutions.
+Run the code for each of these meshes, and report the convergence (via a plot) of the solution with respect to average element size and element order.
 
-In this part we will run an actual FEM simulation.
-
-
-### (2a) Update the Print function
-
-Edit the following file
-
-- `src/Mesh/Unstructured.H`
-
-Update the `Print` function by copying in your previous implementation, and also adding the capability to output nodal displacements.
-
-### (2b) Run the main program
-
-Read through the code in the following file
-
-- `src/main.cpp`
-
-Run the finite element program by compiling and running
-
-    ./bin/main
-
-This will generate an output mesh called `outputfile.vtk` which you can view using Paraview or VisIt.
-You should be able to visualize the displacement field to inspect the result.
-If you cannot, you may need to update the Print function.
-
-Run for all four mesh files, then report and contrast the results.
-
-
-### (2c) Update the boundary conditions in the main program
-
-Modify the boundary conditions in the `main.cpp` program to cantilever loading.
-See the instructions at the bottom of `main.cpp`.
-Re-run with the four meshes and report/contrast the results.
 
 
