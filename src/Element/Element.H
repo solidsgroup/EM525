@@ -37,13 +37,13 @@ public:
         
         // This line creates a zero-valued jacobian matrix --
         // your job is to fill it.
-        Eigen::Matrix2d jacobian = Eigen::Matrix2d::Zero();
+        Set::Matrix jacobian = Eigen::Matrix2d::Zero();
 
         // This line calculates the phi derivatives 
         // The components are indexed by:
         //    dphi^m / dx^n = dphi[m](n)
         // 
-        std::array<Eigen::Vector2d,N> dphi = Dphi(Y);
+        std::array<Set::Vector,N> dphi = Dphi(Y);
 
         //
         // Use this loop to calculate the components of the jacobian matrix.

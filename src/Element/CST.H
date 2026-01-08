@@ -1,6 +1,7 @@
 #ifndef ELEMENT_CST_H
 #define ELEMENT_CST_H
 
+#include "Set/Set.H"
 #include "Element.H"
 
 namespace Element
@@ -21,7 +22,7 @@ public:
 
     std::array<Set::Vector,3> Dphi(Set::Vector Y) override
     {
-        std::array<Eigen::Vector2d,3> ret;
+        std::array<Set::Vector,3> ret;
 
         // TODO - Copy implementation from PS03
 

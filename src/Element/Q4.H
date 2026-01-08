@@ -42,10 +42,10 @@ private:
     //
 
     const std::array<Set::Vector,4> Y0 = {
-        Eigen::Vector2d(-1.0,-1.0),
-        Eigen::Vector2d(1.0,-1.0),
-        Eigen::Vector2d(1.0,1.0),
-        Eigen::Vector2d(-1.0,1.0)
+        Set::Vector(-1.0,-1.0),
+        Set::Vector(1.0,-1.0),
+        Set::Vector(1.0,1.0),
+        Set::Vector(-1.0,1.0)
     };
 
     static constexpr double sq3 = sqrt(3.);
