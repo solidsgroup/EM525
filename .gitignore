@@ -2,3 +2,4 @@ bin
 eigen3
 *.vtk
 compile_commands.json
+#*
