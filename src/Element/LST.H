@@ -10,20 +10,20 @@ class LST : public Element<2,6,4>
 public:
     using Element<2,6,4>::Element;
 
-    std::array<double,6> eta(Set::Vector Y) override
+    std::array<double,6> phi(Set::Vector Y) override
     {
         std::array<double,6> ret;
 
-        // TODO #1: Implement eta
+        // TODO #1: Implement phi
 
         return ret;
     }
 
-    std::array<Set::Vector,6> Deta(Set::Vector Y) override
+    std::array<Set::Vector,6> Dphi(Set::Vector Y) override
     {
         std::array<Eigen::Vector2d,6> ret;
 
-        // TODO #2: Implement dEta
+        // TODO #2: Implement dPhi
         
         return ret;
     }

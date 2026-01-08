@@ -10,22 +10,22 @@ class Q4 : public Element<2,4,4>
 public:
     using Element<2,4,4>::Element;
 
-    std::array<double,4> eta(Set::Vector Y) override
+    std::array<double,4> phi(Set::Vector Y) override
     {
         std::array<double,4> ret;
 
-        // TODO #1: Implement eta
+        // TODO #1: Implement phi
 
         return ret;
     }
 
-    std::array<Set::Vector,4> Deta(Set::Vector Y) override
+    std::array<Set::Vector,4> Dphi(Set::Vector Y) override
     {
-        std::array<Set::Vector,4> Deta;
+        std::array<Set::Vector,4> Dphi;
 
-        // TODO #2: Implement derivative of eta
+        // TODO #2: Implement derivative of phi
 
-        return Deta;
+        return Dphi;
     }
 
 public:

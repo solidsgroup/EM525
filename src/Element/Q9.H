@@ -10,7 +10,7 @@ class Q9 : public Element<2,9,9>
 public:
     using Element<2,9,9>::Element;
 
-    std::array<double,9> eta(Eigen::Vector2d Y)
+    std::array<double,9> phi(Eigen::Vector2d Y)
     {
         std::array<double,9> ret;
 
@@ -19,7 +19,7 @@ public:
         return ret;
     }
 
-    std::array<Eigen::Vector2d,9> Deta(Eigen::Vector2d Y)
+    std::array<Eigen::Vector2d,9> Dphi(Eigen::Vector2d Y)
     {
         std::array<Eigen::Vector2d,9> Dret;
 
